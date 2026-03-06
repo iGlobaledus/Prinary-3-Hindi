@@ -3,27 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>हिंदी विलोम शब्द खेल</title>
+    <title>विलोम खेल</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f0f0f0; margin: 0; padding: 20px; }
-        h1 { color: #333; }
-        .word { font-size: 20px; font-weight: bold; }
-        .antonym { color: #007bff; }
-        button { margin: 10px 0; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
-        button:hover { background-color: #0056b3; }
+        body { font-family: Arial, sans-serif; background-color: #f3f4f6; color: #333; }
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+        .banner { text-align: center; margin-bottom: 20px; }
+        h1 { font-size: 2em; }
+        .card { display: inline-block; width: 30%; margin: 10px; background: #ffffff; border: 1px solid #ccc; border-radius: 5px; padding: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .progress { height: 20px; background: #e0e0e0; border-radius: 5px; margin: 20px 0; }
+        .progress-bar { height: 100%; width: 0; background: #76c7c0; border-radius: 5px; }
+        .question { font-size: 1.5em; }
+        .options { margin: 10px 0; }
+        .option { padding: 10px; margin: 5px; background: #e7f1f2; border-radius: 5px; cursor: pointer; }
+        .score { font-size: 1.2em; }
+        .result { text-align: center; display: none; }
+        .star { font-size: 2em; color: gold; }
     </style>
 </head>
 <body>
-    <h1>हिंदी विलोम शब्द खेल</h1>
-    <div id="game">
-        <p class="word">शांत</p>
-        <button onclick="showAntonym()">विलोम शब्द दिखाएं</button>
-        <p class="antonym" id="antonym" style="display:none;">उद्विग्न</p>
+    <div class="container">
+        <div class="banner">
+            <h1>विलोम खेल</h1>
+            <div class="card">क्विज़ मोड</div>
+            <div class="card">टाइम मोड</div>
+            <div class="card">चैलेंज मोड</div>
+        </div>
+
+        <div class="progress"><div class="progress-bar" style="width: 0;"></div></div>
+
+        <div class="question">
+            <h3 id="question-text">यहाँ प्रश्न जायेगा</h3>
+            <p id="translation-text">यहाँ अनुवाद जायेगा</p>
+        </div>
+        <div class="options">
+            <div class="option" id="option-a">A</div>
+            <div class="option" id="option-b">B</div>
+            <div class="option" id="option-c">C</div>
+            <div class="option" id="option-d">D</div>
+        </div>
+
+        <div class="score">
+            <p>स्कोर: <span id="score">0</span></p>
+            <p>ज़िंदगी: <span id="lives">3</span></p>
+            <p>चरण: <span id="round">1</span></p>
+        </div>
+
+        <div class="result">
+            <h2>आपका परिणाम</h2>
+            <div class="star">⭐️⭐️⭐️⭐️⭐️</div>
+        </div>
     </div>
+
     <script>
-        function showAntonym() {
-            document.getElementById('antonym').style.display = 'block';
+        const wordPairs = [
+            { hindi: 'बड़ा', english: 'small' },
+            { hindi: 'गर्म', english: 'cold' },
+            { hindi: 'दूर', english: 'near' },
+            { hindi: 'उच्च', english: 'low' },
+            { hindi: 'सच', english: 'false' },
+            { hindi: 'खुश', english: 'sad' },
+            { hindi: 'सफेद', english: 'black' },
+            { hindi: 'आसान', english: 'difficult' },
+            { hindi: 'गहरा', english: 'shallow' },
+            { hindi: 'तेज', english: 'slow' },
+            { hindi: 'नया', english: 'old' },
+            { hindi: 'जाता', english: 'comes' },
+            { hindi: 'खुला', english: 'closed' },
+            { hindi: 'सच', english: 'lie' },
+            { hindi: 'महंगा', english: 'cheap' },
+            { hindi: 'साँप', english: 'ladder' },
+            { hindi: 'अनजान', english: 'known' },
+            { hindi: 'गौरव', english: 'shame' },
+            { hindi: 'सफाई', english: 'dirt' },
+            { hindi: 'विज्ञान', english: 'ignorance' },
+            { hindi: 'एक', english: 'many' }
+        ];
+
+        let score = 0;
+        let lives = 3;
+        let round = 0;
+        let currentQuestion = 0;
+
+        function showQuestion() {
+            const question = wordPairs[currentQuestion];
+            document.getElementById('question-text').innerText = question.hindi;
+            document.getElementById('translation-text').innerText = question.english;
+            // Options generation logic here
         }
+
+        // Event listeners for options
+        document.querySelectorAll('.option').forEach((option, index) => {
+            option.addEventListener('click', () => {
+                // Check answer logic here
+            });
+        });
+
+        showQuestion(); // Initial call to show the first question
     </script>
 </body>
 </html>
