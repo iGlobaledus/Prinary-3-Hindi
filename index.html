@@ -1,13 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hindi Antonyms Game</title>
+    <title>हिंदी विलोम शब्द खेल</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f0f0; margin: 0; padding: 20px; }
+        h1 { color: #333; }
+        .word { font-size: 20px; font-weight: bold; }
+        .antonym { color: #007bff; }
+        button { margin: 10px 0; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+    </style>
 </head>
 <body>
-    <h1>Welcome to the Hindi Antonyms Game</h1>
-    <p>Test your knowledge of Hindi antonyms!</p>
-    <!-- More content goes here -->
+    <h1>हिंदी विलोम शब्द खेल</h1>
+    <div id="game">
+        <p class="word">शांत</p>
+        <button onclick="showAntonym()">विलोम शब्द दिखाएं</button>
+        <p class="antonym" id="antonym" style="display:none;">उद्विग्न</p>
+    </div>
+    <script>
+        function showAntonym() {
+            document.getElementById('antonym').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
